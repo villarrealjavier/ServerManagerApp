@@ -4,6 +4,10 @@ import { ComponenteseversComponent } from './servers/componentesevers/componente
 import { HomeComponent } from './home/home.component';
 import { ComponentesusersComponent } from './users/componentesusers/componentesusers.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { UserComponent } from './users/componentesusers/user/user.component';
+import { EditServerComponent } from './edit-server/edit-server.component';
+import { AuthGuard } from './auth-guard.service';
+import { ServerComponent } from './componenteserver/server/server.component';
 
 
 const routes: Routes = [
@@ -17,8 +21,21 @@ const routes: Routes = [
         component: ComponentesusersComponent
     },
     {
-        path: 'servers',
-        component: ComponenteseversComponent
+        path: 'users/:id',
+        component: UserComponent
+    },
+    {
+        path: 'servers',component:ComponenteseversComponent, 
+        canActivateChild: [AuthGuard],
+        children:[{
+            path: ':id/edit',
+        component: EditServerComponent
+        },
+        {
+            path: ':id',
+            component: ServerComponent
+        }
+    ],
     },
     {
         path: '**',

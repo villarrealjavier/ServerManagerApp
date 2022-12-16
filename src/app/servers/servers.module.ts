@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponenteseversComponent } from './componentesevers/componentesevers.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +10,8 @@ import { ComponenteseversComponent } from './componentesevers/componentesevers.c
     ComponenteseversComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],exports:[
     ComponenteseversComponent
   ]

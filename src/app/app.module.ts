@@ -10,11 +10,19 @@ import { AppRoutingModule } from './app.routing';
 import { ServersModule } from './servers/servers.module';
 import { UsersModule } from './users/users.module';
 import {  HttpClientModule } from '@angular/common/http';
+import { EditServerComponent } from './edit-server/edit-server.component';
+import { RouterModule } from '@angular/router';
+import { ServiceService } from './services/service.service';
+import { AuthService } from './authService.service';
+import { AuthGuard } from './auth-guard.service';
+import { ServerComponent } from './componenteserver/server/server.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    EditServerComponent,
+    ServerComponent
   ],
   imports: [
     BrowserModule,
@@ -22,10 +30,11 @@ import {  HttpClientModule } from '@angular/common/http';
     SharedModule,
     ServersModule,
     UsersModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
 
   ],
-  providers: [],
+  providers: [ServiceService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
